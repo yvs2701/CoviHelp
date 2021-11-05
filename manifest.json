@@ -1,0 +1,12 @@
+{
+    "name": "CoviHelp - Slots finder",
+    "description": "Automatically searches for covid vaccination slots and notifies you when a matching slot is found",
+    "version": "0.0.1",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "storage"
+    ]
+}
