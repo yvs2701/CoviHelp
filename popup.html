@@ -1,12 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Slot-finder-extension</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    
+    <table>
+        <tr>
+            <td><h4 for="state-or-pin">Search by:</h4></td>
+            <td><input type="radio" id="pincode" name="state-or-pin" checked>
+                    <label for="pincode">Pincode</label>
+                <input type="radio" id="state" name="state-or-pin">
+                    <label for="state">State & District</label>
+            </td>
+        </tr>
+        <tr>
+            <td><h4>Enter pincode</h4></td>
+            <td>
+                <input type="text" id="Pincode" placeholder="226012">
+            </td>
+        </tr>
+        <tr>
+            <td><h4>Select state/district</h4></td>
+            <td>
+                <select disabled>
+                    <option value="NULL">choose state</option>
+                </select>
+                <select disabled>
+                    <option value="NULL">choose district</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><h4>Age group</h4></td>
+            <td>
+                <select>
+                    <option value="0">all</option>
+                    <option value="18">18 - 44</option>
+                    <option value="44">45 & above</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><h4>Choose dose</h4></td>
+            <td>
+                <input type="radio" id="dose-all" name="name" checked>
+                    <label for="dose-all">any</label>
+                <input type="radio" id="dose-1" name="name">
+                    <label for="dose-1">1st dose</label>
+                <input type="radio" id="dose-2" name="name">
+                    <label for="dose-2">2nd dose</label>
+            </td>
+        </tr>
+        <tr>
+            <td><h4>Choose vaccine</h4></td>
+            <td>
+                <input type="radio" id="any" name="vaccine" checked>
+                    <label for="any">any</label>
+                <input type="radio" id="Covishield" name="vaccine">
+                    <label for="Covishield">Covishield</label>
+                <input type="radio" id="Covaxin" name="vaccine">
+                    <label for="Covaxin">Covaxin</label>
+                <input type="radio" id="SputnikV" name="vaccine">
+                    <label for="SputnikV">Sputnik V</label>
+            </td>
+        </tr>
+    </table>
+    <button class="submit">Submit</button>
 </body>
 </html>

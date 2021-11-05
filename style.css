@@ -1,0 +1,14 @@
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+/* thanks css-tricks for this tip: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+
+body { min-width: 484px; }
+
+table, tr, td {
+    border: 1px solid black;
+    min-width: 100%;
+}
+table {
+    border-collapse: collapse;
+    text-align: center;
+}
