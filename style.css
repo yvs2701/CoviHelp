@@ -1,14 +1,76 @@
+:root {
+    --off-white: #fbfbfb;
+    --placeholder: #a8a8bf;
+    --text: #25265e;
+    --sub-text: rgba(37, 38, 94, 0.7);
+    --text-dark: #f9fafc;
+    --sub-text-dark: #d3dce6;
+    --primary: #0556f3;
+    --primary-hover: #03338f;
+    --border: 1px solid #d3dce6;
+    --focus-border: 1px solid #0556f3;
+    --table-hover: rgba(211, 220, 230, 0.24);
+    --table-hover: rgba(211, 220, 230, 0.4);
+    --body-bg: #fafcff;
+    --shadow: 0 12px 24px rgba(2, 30, 84, 0.1);
+}
+/* resetting some browser defaults */
 html { box-sizing: border-box; }
 *, *:before, *:after { box-sizing: inherit; }
 /* thanks css-tricks for this tip: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 
-body { min-width: 484px; }
+body { min-width: 484px; background-color:var(--body-bg); }
 
+/* basic table styles */
 table, tr, td {
-    border: 1px solid black;
+    border: var(--border);
     min-width: 100%;
 }
 table {
     border-collapse: collapse;
     text-align: center;
+    background-color: white;
 }
+tr:nth-child(even){ background-color: var(--off-white); }
+tr:hover { background-color: var(--table-hover); }
+tr { color: var(--sub-text); }
+tr > td > h4 { color: var(--text); }
+
+/* input fields styles */
+input[type="radio"], input[type="radio"]+label {
+    cursor: pointer;
+}
+input[type="radio"]:checked+label {
+    color: var(--text);
+}
+
+/* dropdown and input text styles */
+input[type="text"], select {
+    outline: none;
+    border: var(--border);
+    border-radius: 4px;
+    background-color: var(--off-white);
+    color: var(--sub-text);
+}
+input[type="text"]::placeholder {
+    color: var(--placeholder);
+}
+input[type="text"]:focus, select:focus {
+    border: var(--focus-border);
+}
+input[type="text"]:disabled, input[type="text"]:disabled::placeholder, select:disabled {
+    color: var(--sub-text-dark);
+}
+
+/* button styles */
+#submit {
+    cursor: pointer;
+    outline: none;
+    padding: 8px 20px;
+    margin: 4px 0;
+    border: var(--border);
+    border-radius: 4px;
+    color: var(--text-dark);
+    background-color: var(--primary);
+}
+#submit:hover { background-color: var(--primary-hover); }
