@@ -12,7 +12,8 @@
     <table>
         <tr>
             <td><h4 for="state-or-pin">Search by:</h4></td>
-            <td><input type="radio" id="pincode" name="state-or-pin" checked>
+            <td>
+                <input type="radio" id="pincode" name="state-or-pin" checked>
                     <label for="pincode">Pincode</label>
                 <input type="radio" id="state" name="state-or-pin">
                     <label for="state">State & District</label>
@@ -21,16 +22,16 @@
         <tr>
             <td><h4>Enter pincode</h4></td>
             <td>
-                <input type="text" id="Pincode" placeholder="226012">
+                <input type="text" id="$pincode" placeholder="226012">
             </td>
         </tr>
         <tr>
             <td><h4>Select state/district</h4></td>
             <td>
-                <select disabled>
+                <select id="choose-state" disabled>
                     <option value="NULL">choose state</option>
                 </select>
-                <select disabled>
+                <select id="choose-district" disabled>
                     <option value="NULL">choose district</option>
                 </select>
             </td>
@@ -70,6 +71,8 @@
             </td>
         </tr>
     </table>
-    <button class="submit">Submit</button>
+    <button id="submit">Submit</button>
+
+    <script src="./script.js"></script>
 </body>
 </html>
