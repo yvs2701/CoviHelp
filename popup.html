@@ -39,7 +39,7 @@
         <tr>
             <td><h4>Age group</h4></td>
             <td>
-                <select>
+                <select id="age-group-filter">
                     <option value="0">all</option>
                     <option value="18">18 - 44</option>
                     <option value="44">45 & above</option>
@@ -49,24 +49,24 @@
         <tr>
             <td><h4>Choose dose</h4></td>
             <td>
-                <input type="radio" id="dose-all" name="name" checked>
+                <input type="radio" id="dose-all" name="dose" value="" checked>
                     <label for="dose-all">any</label>
-                <input type="radio" id="dose-1" name="name">
+                <input type="radio" id="dose-1" name="dose" value="1">
                     <label for="dose-1">1st dose</label>
-                <input type="radio" id="dose-2" name="name">
+                <input type="radio" id="dose-2" name="dose" value="2">
                     <label for="dose-2">2nd dose</label>
             </td>
         </tr>
         <tr>
             <td><h4>Choose vaccine</h4></td>
             <td>
-                <input type="radio" id="any" name="vaccine" checked>
+                <input type="radio" id="any" name="vaccine" value="" checked>
                     <label for="any">any</label>
-                <input type="radio" id="Covishield" name="vaccine">
+                <input type="radio" id="Covishield" name="vaccine" value="COVISHIELD">
                     <label for="Covishield">Covishield</label>
-                <input type="radio" id="Covaxin" name="vaccine">
+                <input type="radio" id="Covaxin" name="vaccine" value="COVAXIN">
                     <label for="Covaxin">Covaxin</label>
-                <input type="radio" id="SputnikV" name="vaccine">
+                <input type="radio" id="SputnikV" name="vaccine" value="SPUTNIK V">
                     <label for="SputnikV">Sputnik V</label>
             </td>
         </tr>

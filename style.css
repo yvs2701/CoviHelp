@@ -19,7 +19,7 @@ html { box-sizing: border-box; }
 *, *:before, *:after { box-sizing: inherit; }
 /* thanks css-tricks for this tip: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 
-body { min-width: 484px; background-color:var(--body-bg); }
+body { min-width: 584px; background-color:var(--body-bg); }
 
 /* basic table styles */
 table, tr, td {
@@ -34,9 +34,30 @@ table {
 tr:nth-child(even){ background-color: var(--off-white); }
 tr:hover { background-color: var(--table-hover); }
 tr { color: var(--sub-text); }
-tr > td > h4 { color: var(--text); }
+td h4 { color: var(--text); }
 
-/* input fields styles */
+/* radio button styles */
+input[type="radio"] {
+    visibility: hidden;
+}
+input[type="radio"]:after {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: -2px;
+    position: relative;
+    /* using multi-position color stops, with adjacent colors having the
+    same color stop value, creating a striped effect (sharp color boundaries) */
+    background: radial-gradient(transparent 0% 48%, var(--primary) 52%);
+    content: "";
+    display: inline-block;
+    visibility: visible;
+}
+
+input[type="radio"]:checked:after {
+    background: radial-gradient(transparent 24%, var(--primary) 24% 100%);
+}
+/* custom radio implementation ends; Other radio styles: */
 input[type="radio"], input[type="radio"]+label {
     cursor: pointer;
 }
@@ -52,12 +73,11 @@ input[type="text"], select {
     background-color: var(--off-white);
     color: var(--sub-text);
 }
-input[type="text"]::placeholder {
-    color: var(--placeholder);
-}
-input[type="text"]:focus, select:focus {
-    border: var(--focus-border);
-}
+
+input[type="text"] { color: var(--text); }
+select { color: var(--text); }
+input[type="text"]::placeholder { color: var(--placeholder); }
+input[type="text"]:focus, select:focus { border: var(--focus-border); }
 input[type="text"]:disabled, input[type="text"]:disabled::placeholder, select:disabled {
     color: var(--sub-text-dark);
 }
