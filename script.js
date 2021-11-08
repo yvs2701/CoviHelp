@@ -15,6 +15,25 @@ const getRequest = async (URL) => {
     }
 }
 
+const notify = () => {
+    const ding_notify = new Audio('./sounds/ding.mp3');
+    chrome.notifications.create('slots_available', {
+        iconUrl: 'icon48.png',
+        type: 'basic',
+        title: 'Slots available',
+        message: 'Hurry ! Vaccination slots are available !',
+        buttons: [
+            {
+                title: 'Cancel'
+            },
+            {
+                title: 'Go to CoWin'
+            }
+        ]
+    });
+    ding_notify.play();
+}
+
 const getStates = async () => {
     const url = 'https://cdn-api.co-vin.in/api/v2/admin/location/states';
     const response = await getRequest(url);
@@ -103,6 +122,7 @@ const renderSlots = (response) => {
                     </tr>`;
             });
             table.innerHTML += '</tbody>';
+            notify();
         }
     }
 }
@@ -128,41 +148,39 @@ const findVaccineByState = async (dist_id) => {
     renderSlots(response);
 }
 
-window.onload = () => {
-    getStates();
-    const stateRadio = document.getElementsByName('state-or-pin');
-    const pincode_input_field = document.getElementById('$pincode');
-    const state_dropdown_field = document.getElementById('choose-state');
-    const district_dropdown_field = document.getElementById('choose-district');
+getStates();
+const stateRadio = document.querySelectorAll('input[name="state-or-pin"]');
+const pincode_input_field = document.getElementById('$pincode');
+const state_dropdown_field = document.getElementById('choose-state');
+const district_dropdown_field = document.getElementById('choose-district');
 
-    stateRadio[0].onchange = () => {
-        pincode_input_field.toggleAttribute('disabled');
-        state_dropdown_field.toggleAttribute('disabled');
-        if (!district_dropdown_field.hasAttribute('disabled'))
-            district_dropdown_field.toggleAttribute('disabled');
-    };
-    stateRadio[1].onchange = () => {
-        pincode_input_field.toggleAttribute('disabled');
-        state_dropdown_field.toggleAttribute('disabled');
-        if (state_dropdown_field.value !== 'NULL' && district_dropdown_field.hasAttribute('disabled')) {
-            district_dropdown_field.toggleAttribute('disabled');
-        } else if (state_dropdown_field.value === 'NULL' && !district_dropdown_field.hasAttribute('disabled'))
-            district_dropdown_field.toggleAttribute('disabled');
-    };
+stateRadio[0].onchange = () => {
+    pincode_input_field.toggleAttribute('disabled');
+    state_dropdown_field.toggleAttribute('disabled');
+    if (!district_dropdown_field.hasAttribute('disabled'))
+        district_dropdown_field.toggleAttribute('disabled');
+};
+stateRadio[1].onchange = () => {
+    pincode_input_field.toggleAttribute('disabled');
+    state_dropdown_field.toggleAttribute('disabled');
+    if (state_dropdown_field.value !== 'NULL' && district_dropdown_field.hasAttribute('disabled')) {
+        district_dropdown_field.toggleAttribute('disabled');
+    } else if (state_dropdown_field.value === 'NULL' && !district_dropdown_field.hasAttribute('disabled'))
+        district_dropdown_field.toggleAttribute('disabled');
+};
 
-    state_dropdown_field.onchange = () => {
-        if (state_dropdown_field.value !== 'NULL') {
-            getDistricts(state_dropdown_field.value);
-            if (district_dropdown_field.hasAttribute('disabled'))
-                district_dropdown_field.toggleAttribute('disabled');
-        } else if (state_dropdown_field.value === 'NULL' && !district_dropdown_field.hasAttribute('disabled'))
+state_dropdown_field.onchange = () => {
+    if (state_dropdown_field.value !== 'NULL') {
+        getDistricts(state_dropdown_field.value);
+        if (district_dropdown_field.hasAttribute('disabled'))
             district_dropdown_field.toggleAttribute('disabled');
-    };
+    } else if (state_dropdown_field.value === 'NULL' && !district_dropdown_field.hasAttribute('disabled'))
+        district_dropdown_field.toggleAttribute('disabled');
+};
 
-    document.getElementById('submit').onclick = () => {
-        if (stateRadio[0].checked && pincode_input_field.value.length === 6)
-            findVaccineByPincode(pincode_input_field.value);
-        else if (stateRadio[1].checked)
-            findVaccineByState(district_dropdown_field.value);
-    }
+document.getElementById('submit').onclick = () => {
+    if (stateRadio[0].checked && pincode_input_field.value.length === 6)
+        findVaccineByPincode(pincode_input_field.value);
+    else if (stateRadio[1].checked)
+        findVaccineByState(district_dropdown_field.value);
 }
