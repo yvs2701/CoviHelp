@@ -83,13 +83,27 @@ input[type="text"]:disabled, input[type="text"]:disabled::placeholder, select:di
 
 /* button styles */
 #submit {
+    width: 84px;
     cursor: pointer;
     outline: none;
     padding: 8px 20px;
-    margin: 4px 0;
-    border: var(--border);
+    margin: 4px 4px 4px 0;
+    border: var(--focus-border);
     border-radius: 4px;
     color: var(--text-dark);
     background-color: var(--primary);
 }
-#submit:hover { background-color: var(--primary-hover); }
+#submit:hover { background-color: var(--primary-hover); border-color: var(--primary-hover); }
+#stop {
+    width: 84px;
+    cursor: pointer;
+    outline: none;
+    padding: 8px 20px;
+    margin: 4px 4px 4px 0;
+    border: var(--focus-border);
+    border-radius: 4px;
+    color: var(--primary);
+    background-color: transparent;
+}
+#stop:hover { border-color: var(--primary-hover); color: var(--primary-hover); font-weight: bold; }
+#submit:active, #stop:active { border-radius: 6px; }
