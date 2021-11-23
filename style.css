@@ -44,7 +44,6 @@ input[type="radio"]:after {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    top: -2px;
     position: relative;
     /* using multi-position color stops, with adjacent colors having the
     same color stop value, creating a striped effect (sharp color boundaries) */
