@@ -106,4 +106,4 @@ input[type="text"]:disabled, input[type="text"]:disabled::placeholder, select:di
     background-color: transparent;
 }
 #stop:hover { border-color: var(--primary-hover); color: var(--primary-hover); font-weight: bold; }
-#submit:active, #stop:active { border-radius: 6px; }
+#submit:active, #stop:active { border-radius: 6px; border-width: 2px;}
